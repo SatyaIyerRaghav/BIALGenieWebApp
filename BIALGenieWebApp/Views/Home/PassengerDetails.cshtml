@@ -1,0 +1,109 @@
+﻿@model BIALGenieWebApp.Models.PassengerDetail
+
+<div>
+    <p style="background-color:goldenrod; font-size:large">
+        @ViewData["lblmsg"]
+    </p>
+</div>
+
+<h2>Knowing Your Passenger</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.GuestName, "Guest Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.GuestName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GuestName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Emailid, "Registered Email Id", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Emailid, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Emailid, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PreferredLanguage, "Preferred Language", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.PreferredLanguage, new List<SelectListItem>
+         {
+             new SelectListItem {Text="English",Value="English"},
+             new SelectListItem {Text="Hindi",Value="Hindi"},
+             new SelectListItem {Text="Tamil",Value="Tamil"},
+             new SelectListItem {Text="Telangu",Value="Telangu"},
+             new SelectListItem {Text="Marathi",Value="Marathi"},
+             new SelectListItem {Text="Bengali",Value="Bengali"},
+         }, "--Please Select--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PreferredLanguage, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SpecialReq, "Special Requirements", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.SpecialReq, new List<SelectListItem>
+      {
+          new SelectListItem {Text="WheelChair",Value="WheelChair"},
+          new SelectListItem {Text="Attender Support",Value="Attender Support"},
+          new SelectListItem {Text="Bus",Value="Bus"},
+           new SelectListItem {Text="None",Value="None"},
+
+      }, "--Please Select--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SpecialReq, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PassportNumber, "Passport Number", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PassportNumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PassportNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nationality, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Dob, "Date Of Birth", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Dob, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Dob, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    <p class="btn btn-default" style="background-color:gold; font-size:large"> @Html.ActionLink("Back", "Homepage")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p class="btn btn-default" style="background-color:gold; font-size:large"> @Html.ActionLink("View Passenger List", "PassengerDetailsList") &nbsp;&nbsp;&nbsp; </p>
+</div>

@@ -1,0 +1,74 @@
+﻿<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+@model IEnumerable<BIALGenieWebApp.Models.PassengerDetail>
+
+<h3>List Of Guest Name :</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GuestName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Emailid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreferredLanguage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SpecialReq)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dob)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuestName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emailid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreferredLanguage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecialReq)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dob)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditPassengerDetailsList", new { id = item.PassportNumber }) |
+                @Html.ActionLink("Delete", "DeletePassengerDetailsList", new { id = item.PassportNumber })
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    <p class="btn btn-default" style="background-color:gold; font-size:large">  @Html.ActionLink("Add Person", "PassengerDetails")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p class="btn btn-default" style="background-color:gold; font-size:large">@Html.ActionLink("Next", "FlightDetails") &nbsp;&nbsp;&nbsp; </p>
+</div>

@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="passengersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BookingDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="GuestName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassportNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServiceOpted" Type="varchar" MaxLength="50" />
+          <Property Name="DateBooked" Type="varchar" MaxLength="50" />
+          <Property Name="DateOn" Type="varchar" MaxLength="50" />
+          <Property Name="TimeAt" Type="varchar" MaxLength="50" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AmountPaid" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FlightDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="FlightType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ArrivalFlightNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ArrivalAirline" Type="varchar" MaxLength="50" />
+          <Property Name="ArrivalDate" Type="varchar" MaxLength="50" />
+          <Property Name="ArrivalTime" Type="varchar" MaxLength="50" />
+          <Property Name="Origin" Type="varchar" MaxLength="50" />
+          <Property Name="PNRNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassportNumber" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gymservices">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassportNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GuestName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="duration" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="payment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="amount" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PassengerDetails">
+          <Key>
+            <PropertyRef Name="PassportNumber" />
+          </Key>
+          <Property Name="GuestName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Emailid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PreferredLanguage" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpecialReq" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassportNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nationality" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dob" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="spaservices">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassportNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GuestName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="duration" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="therapist" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="amount" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="payment" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'passengers.dbo.GymServiceView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GymServiceView">
+          <Key>
+            <PropertyRef Name="GuestName" />
+            <PropertyRef Name="PassportNumber" />
+            <PropertyRef Name="Emailid" />
+            <PropertyRef Name="Mobile" />
+            <PropertyRef Name="PreferredLanguage" />
+            <PropertyRef Name="SpecialReq" />
+            <PropertyRef Name="duration" />
+            <PropertyRef Name="payment" />
+            <PropertyRef Name="amount" />
+            <PropertyRef Name="Nationality" />
+            <PropertyRef Name="Dob" />
+            <PropertyRef Name="FlightType" />
+            <PropertyRef Name="ArrivalFlightNo" />
+            <PropertyRef Name="PNRNumber" />
+          </Key>
+          <Property Name="GuestName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassportNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServiceOpted" Type="varchar" MaxLength="50" />
+          <Property Name="DateBooked" Type="varchar" MaxLength="50" />
+          <Property Name="Emailid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PreferredLanguage" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpecialReq" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="duration" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="payment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="amount" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nationality" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dob" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlightType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ArrivalFlightNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ArrivalAirline" Type="varchar" MaxLength="50" />
+          <Property Name="ArrivalDate" Type="varchar" MaxLength="50" />
+          <Property Name="ArrivalTime" Type="varchar" MaxLength="50" />
+          <Property Name="PNRNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Origin" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'passengers.dbo.SpaView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SpaView">
+          <Key>
+            <PropertyRef Name="GuestName" />
+            <PropertyRef Name="PassportNumber" />
+            <PropertyRef Name="Emailid" />
+            <PropertyRef Name="Mobile" />
+            <PropertyRef Name="PreferredLanguage" />
+            <PropertyRef Name="SpecialReq" />
+            <PropertyRef Name="Nationality" />
+            <PropertyRef Name="Dob" />
+            <PropertyRef Name="duration" />
+            <PropertyRef Name="therapist" />
+            <PropertyRef Name="amount" />
+            <PropertyRef Name="FlightType" />
+            <PropertyRef Name="ArrivalFlightNo" />
+            <PropertyRef Name="PNRNumber" />
+          </Key>
+          <Property Name="GuestName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassportNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServiceOpted" Type="varchar" MaxLength="50" />
+          <Property Name="DateBooked" Type="varchar" MaxLength="50" />
+          <Property Name="TimeAt" Type="varchar" MaxLength="50" />
+          <Property Name="Emailid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PreferredLanguage" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SpecialReq" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nationality" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dob" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="duration" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="therapist" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="amount" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FlightType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ArrivalFlightNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ArrivalAirline" Type="varchar" MaxLength="50" />
+          <Property Name="ArrivalDate" Type="varchar" MaxLength="50" />
+          <Property Name="ArrivalTime" Type="varchar" MaxLength="50" />
+          <Property Name="Origin" Type="varchar" MaxLength="50" />
+          <Property Name="PNRNumber" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="passengersModelStoreContainer">
+          <EntitySet Name="BookingDetail" EntityType="Self.BookingDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlightDetails" EntityType="Self.FlightDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gymservices" EntityType="Self.gymservices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PassengerDetails" EntityType="Self.PassengerDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="spaservices" EntityType="Self.spaservices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GymServiceView" EntityType="Self.GymServiceView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GymServiceView].[GuestName] AS [GuestName], 
+    [GymServiceView].[PassportNumber] AS [PassportNumber], 
+    [GymServiceView].[ServiceOpted] AS [ServiceOpted], 
+    [GymServiceView].[DateBooked] AS [DateBooked], 
+    [GymServiceView].[Emailid] AS [Emailid], 
+    [GymServiceView].[Mobile] AS [Mobile], 
+    [GymServiceView].[PreferredLanguage] AS [PreferredLanguage], 
+    [GymServiceView].[SpecialReq] AS [SpecialReq], 
+    [GymServiceView].[duration] AS [duration], 
+    [GymServiceView].[payment] AS [payment], 
+    [GymServiceView].[amount] AS [amount], 
+    [GymServiceView].[Nationality] AS [Nationality], 
+    [GymServiceView].[Dob] AS [Dob], 
+    [GymServiceView].[FlightType] AS [FlightType], 
+    [GymServiceView].[ArrivalFlightNo] AS [ArrivalFlightNo], 
+    [GymServiceView].[ArrivalAirline] AS [ArrivalAirline], 
+    [GymServiceView].[ArrivalDate] AS [ArrivalDate], 
+    [GymServiceView].[ArrivalTime] AS [ArrivalTime], 
+    [GymServiceView].[PNRNumber] AS [PNRNumber], 
+    [GymServiceView].[Origin] AS [Origin]
+    FROM [dbo].[GymServiceView] AS [GymServiceView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SpaView" EntityType="Self.SpaView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SpaView].[GuestName] AS [GuestName], 
+    [SpaView].[PassportNumber] AS [PassportNumber], 
+    [SpaView].[ServiceOpted] AS [ServiceOpted], 
+    [SpaView].[DateBooked] AS [DateBooked], 
+    [SpaView].[TimeAt] AS [TimeAt], 
+    [SpaView].[Emailid] AS [Emailid], 
+    [SpaView].[Mobile] AS [Mobile], 
+    [SpaView].[PreferredLanguage] AS [PreferredLanguage], 
+    [SpaView].[SpecialReq] AS [SpecialReq], 
+    [SpaView].[Nationality] AS [Nationality], 
+    [SpaView].[Dob] AS [Dob], 
+    [SpaView].[duration] AS [duration], 
+    [SpaView].[therapist] AS [therapist], 
+    [SpaView].[amount] AS [amount], 
+    [SpaView].[FlightType] AS [FlightType], 
+    [SpaView].[ArrivalFlightNo] AS [ArrivalFlightNo], 
+    [SpaView].[ArrivalAirline] AS [ArrivalAirline], 
+    [SpaView].[ArrivalDate] AS [ArrivalDate], 
+    [SpaView].[ArrivalTime] AS [ArrivalTime], 
+    [SpaView].[Origin] AS [Origin], 
+    [SpaView].[PNRNumber] AS [PNRNumber]
+    FROM [dbo].[SpaView] AS [SpaView]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="passengersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BookingDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="GuestName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PassportNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ServiceOpted" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateBooked" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimeAt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AmountPaid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PassengerDetail">
+          <Key>
+            <PropertyRef Name="PassportNumber" />
+          </Key>
+          <Property Name="GuestName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Emailid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PreferredLanguage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SpecialReq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassportNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dob" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="passengersEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BookingDetails" EntityType="Self.BookingDetail" />
+          <EntitySet Name="PassengerDetails" EntityType="Self.PassengerDetail" />
+          <EntitySet Name="gymservices" EntityType="passengersModel.gymservice" />
+          <EntitySet Name="spaservices" EntityType="passengersModel.spaservice" />
+          <EntitySet Name="GymServiceViews" EntityType="passengersModel.GymServiceView" />
+          <EntitySet Name="SpaViews" EntityType="passengersModel.SpaView" />
+          <EntitySet Name="FlightDetails" EntityType="passengersModel.FlightDetail" />
+        </EntityContainer>
+        <EntityType Name="gymservice">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassportNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GuestName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="duration" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="payment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="spaservice">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassportNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GuestName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="duration" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="therapist" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="payment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GymServiceView">
+          <Key>
+            <PropertyRef Name="GuestName" />
+            <PropertyRef Name="PassportNumber" />
+            <PropertyRef Name="Emailid" />
+            <PropertyRef Name="Mobile" />
+            <PropertyRef Name="PreferredLanguage" />
+            <PropertyRef Name="SpecialReq" />
+            <PropertyRef Name="FlightType" />
+            <PropertyRef Name="ArrivalFlightNo" />
+            <PropertyRef Name="duration" />
+            <PropertyRef Name="payment" />
+            <PropertyRef Name="amount" />
+            <PropertyRef Name="PNRNumber" />
+            <PropertyRef Name="Nationality" />
+            <PropertyRef Name="Dob" />
+          </Key>
+          <Property Name="GuestName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PassportNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceOpted" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateBooked" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emailid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PreferredLanguage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SpecialReq" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FlightType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalFlightNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalAirline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="duration" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="payment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Origin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PNRNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nationality" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dob" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SpaView">
+          <Key>
+            <PropertyRef Name="GuestName" />
+            <PropertyRef Name="PassportNumber" />
+            <PropertyRef Name="Emailid" />
+            <PropertyRef Name="Mobile" />
+            <PropertyRef Name="PreferredLanguage" />
+            <PropertyRef Name="SpecialReq" />
+            <PropertyRef Name="Nationality" />
+            <PropertyRef Name="Dob" />
+            <PropertyRef Name="duration" />
+            <PropertyRef Name="therapist" />
+            <PropertyRef Name="amount" />
+            <PropertyRef Name="FlightType" />
+            <PropertyRef Name="ArrivalFlightNo" />
+            <PropertyRef Name="PNRNumber" />
+          </Key>
+          <Property Name="GuestName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PassportNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceOpted" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateBooked" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimeAt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Emailid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PreferredLanguage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SpecialReq" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nationality" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dob" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="duration" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="therapist" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FlightType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalFlightNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalAirline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Origin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PNRNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FlightDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="FlightType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalFlightNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalAirline" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Origin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PNRNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassportNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="passengersModelStoreContainer" CdmEntityContainer="passengersEntities1">
+          <EntitySetMapping Name="BookingDetails">
+            <EntityTypeMapping TypeName="passengersModel.BookingDetail">
+              <MappingFragment StoreEntitySet="BookingDetail">
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="ServiceOpted" ColumnName="ServiceOpted" />
+                <ScalarProperty Name="DateBooked" ColumnName="DateBooked" />
+                <ScalarProperty Name="DateOn" ColumnName="DateOn" />
+                <ScalarProperty Name="TimeAt" ColumnName="TimeAt" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PassengerDetails">
+            <EntityTypeMapping TypeName="passengersModel.PassengerDetail">
+              <MappingFragment StoreEntitySet="PassengerDetails">
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="PreferredLanguage" ColumnName="PreferredLanguage" />
+                <ScalarProperty Name="SpecialReq" ColumnName="SpecialReq" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Dob" ColumnName="Dob" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gymservices">
+            <EntityTypeMapping TypeName="passengersModel.gymservice">
+              <MappingFragment StoreEntitySet="gymservices">
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="spaservices">
+            <EntityTypeMapping TypeName="passengersModel.spaservice">
+              <MappingFragment StoreEntitySet="spaservices">
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="therapist" ColumnName="therapist" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GymServiceViews">
+            <EntityTypeMapping TypeName="passengersModel.GymServiceView">
+              <MappingFragment StoreEntitySet="GymServiceView">
+                <ScalarProperty Name="Dob" ColumnName="Dob" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="PNRNumber" ColumnName="PNRNumber" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="payment" ColumnName="payment" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="ArrivalAirline" ColumnName="ArrivalAirline" />
+                <ScalarProperty Name="ArrivalFlightNo" ColumnName="ArrivalFlightNo" />
+                <ScalarProperty Name="FlightType" ColumnName="FlightType" />
+                <ScalarProperty Name="SpecialReq" ColumnName="SpecialReq" />
+                <ScalarProperty Name="PreferredLanguage" ColumnName="PreferredLanguage" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="DateBooked" ColumnName="DateBooked" />
+                <ScalarProperty Name="ServiceOpted" ColumnName="ServiceOpted" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpaViews">
+            <EntityTypeMapping TypeName="passengersModel.SpaView">
+              <MappingFragment StoreEntitySet="SpaView">
+                <ScalarProperty Name="PNRNumber" ColumnName="PNRNumber" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="ArrivalAirline" ColumnName="ArrivalAirline" />
+                <ScalarProperty Name="ArrivalFlightNo" ColumnName="ArrivalFlightNo" />
+                <ScalarProperty Name="FlightType" ColumnName="FlightType" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="therapist" ColumnName="therapist" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="Dob" ColumnName="Dob" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="SpecialReq" ColumnName="SpecialReq" />
+                <ScalarProperty Name="PreferredLanguage" ColumnName="PreferredLanguage" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="TimeAt" ColumnName="TimeAt" />
+                <ScalarProperty Name="DateBooked" ColumnName="DateBooked" />
+                <ScalarProperty Name="ServiceOpted" ColumnName="ServiceOpted" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlightDetails">
+            <EntityTypeMapping TypeName="passengersModel.FlightDetail">
+              <MappingFragment StoreEntitySet="FlightDetails">
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PNRNumber" ColumnName="PNRNumber" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="ArrivalAirline" ColumnName="ArrivalAirline" />
+                <ScalarProperty Name="ArrivalFlightNo" ColumnName="ArrivalFlightNo" />
+                <ScalarProperty Name="FlightType" ColumnName="FlightType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

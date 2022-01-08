@@ -1,0 +1,76 @@
+﻿<table>
+    <tr>
+        <td>
+            @Html.Label("Services/Massages Booked")
+        </td>
+        <td>
+            @Html.DropDownList("SpaServices", new List<SelectListItem>
+              {
+            new SelectListItem{Text="Shirodhara -- 1 hr",Value="Shirodhara -- 1 hr"},
+                  new SelectListItem{Text="Head Massage -- 30 min",Value="Head Massage -- 30 min"},
+                  new SelectListItem{Text="Foot Massage -- 1 hr",Value="Foot Massage -- 1 hr"},
+                  new SelectListItem{Text="Abhyanga -- 1 hr",Value="Abhyanga -- 1 hr"},
+              }, "Select the service from list", new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Therapist")
+        </td>
+        <td>
+            @Html.DropDownList("Therapist", new List<SelectListItem>
+             {
+           new SelectListItem{Text="Male",Value="Male"},
+                 new SelectListItem{Text="Female",Value="Female"},
+              }, "Please select ", new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Mode Of Payment")
+        </td>
+        <td>
+            @Html.DropDownList("payment", new List<SelectListItem>
+              {
+                  new SelectListItem{Text="Cash",Value="Cash"},
+                  new SelectListItem{Text="Credit Card",Value="Credit Card"},
+                  new SelectListItem{Text="Debit Card",Value="Debit Card"},
+
+              }, "Please select the service from list", new { @class = "form-control" })
+        </td>
+    </tr>
+</table>
+
+<input type="submit" id="btn1" value="Submit" />
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<head>
+    <script type="text/javascript">
+        $('#btn1').click(function () {
+
+            var duration = $('#SpaServices').val();
+            var payment = $('#payment').val();
+            var pno = $('#PassportNumber').val();
+            var gname = $('#GuestName').val();
+            var therapist = $('#Therapist').val();
+           
+            debugger;
+            $.ajax({
+                type: "Post",
+                url: "/Home/ChildViewSpa",
+                data: '{duration: "' + duration + '",payment: "' + payment + '",pno: "' + pno + '",gname: "' + gname + '",therapist: "' + therapist + '" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (result) {
+                    $('#targetElement').html(result); // assign rendered output to target element's ID
+                    alert("success")
+                }
+            });
+
+        });
+
+
+    </script>
+</head>

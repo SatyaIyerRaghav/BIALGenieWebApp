@@ -1,0 +1,132 @@
+﻿@model BIALGenieWebApp.Models.FlightDetail
+
+<div>
+    <p style="background-color:goldenrod; font-size:large">
+        @ViewData["lblmsg"]
+    </p>
+</div>
+
+<h2>Flight Details</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="text-align:left">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Flight Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(model => model.FlightType, new List<SelectListItem>
+           {
+               new SelectListItem {Text="Arrival",Value="Arrival"},
+               new SelectListItem {Text="Departure",Value="Departure"},
+           }, "--Please Select--", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.FlightType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Arrival Flight Number", htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ArrivalFlightNo, new List<SelectListItem>
+           {
+                    new SelectListItem {Text="6E411",Value="6E411"},
+                    new SelectListItem {Text="6E6423",Value="6E6423"},
+                    new SelectListItem {Text="UK818",Value="UK818"},
+                    new SelectListItem {Text="I5991 ",Value="I5991"},
+                    new SelectListItem {Text="UK850",Value="UK850"},
+                    new SelectListItem {Text="6E676",Value="6E676"},
+                    new SelectListItem {Text="6E6386",Value="6E6386"},
+                    new SelectListItem {Text="6E855",Value="6E855"},
+                    new SelectListItem {Text="6E426",Value="6E426"},
+                    new SelectListItem {Text="6E7165",Value="6E7165"}
+           }, "--Please Select--", new { @class = "form-control" })
+            </div>
+            @Html.ValidationMessageFor(model => model.ArrivalFlightNo, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Arrival Airline", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ArrivalAirline, new List<SelectListItem>
+                   {
+                 new SelectListItem {Text="IndiGo -- Bengaluru to Bhubaneswarm --",Value="IndiGo -- Bengaluru to Bhubaneswarm --"},
+                new SelectListItem {Text=" IndiGo -- Bengaluru to Ahmedabad --",Value="IndiGo -- Bengaluru to Ahmedabad --"},
+                new SelectListItem {Text=" Vistara -- Bengaluru to Delhi --",Value=" Vistara -- Bengaluru to Delhi --"},
+                new SelectListItem {Text=" AirAsia India -- Bengaluru to Kocchi --",Value="AirAsia India -- Bengaluru to Kocchi --"},
+                new SelectListItem {Text=" Vistara -- Bengaluru to Mumbai --",Value="Vistara -- Bengaluru to Mumbai --"},
+                new SelectListItem {Text=" IndiGo -- Bengaluru to Kolkatta --",Value="IndiGo -- Bengaluru to Kolkatta --"},
+                new SelectListItem {Text=" IndiGo -- Bengaluru to Delhi --",Value="IndiGo -- Bengaluru to Delhi --"},
+                new SelectListItem {Text=" IndiGo -- Bengaluru to Hyderabad --",Value="IndiGo -- Bengaluru to Hyderabad --"},
+                new SelectListItem {Text=" IndiGo -- Bengaluru to Pune --",Value="IndiGo -- Bengaluru to Pune --"},
+                new SelectListItem {Text=" IndiGo -- Bengaluru to Tiruchirappalli --",Value="IndiGo -- Bengaluru to Tiruchirappalli --"}
+           }, "Please Select From List", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.ArrivalAirline, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArrivalDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArrivalDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ArrivalDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArrivalTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ArrivalTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ArrivalTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Origin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Origin, new List<SelectListItem>
+                    {
+                     new SelectListItem {Text="Bengaluru",Value="Bengaluru"},
+                     new SelectListItem {Text="Bhubaneswarm",Value="Bhubaneswarm"},
+                     new SelectListItem {Text="Ahmedabad",Value="Ahmedabad"},
+                     new SelectListItem {Text="Kocchi",Value="Kocchi"},
+                     new SelectListItem {Text="Mumbai",Value="Mumbai"},
+                     new SelectListItem {Text="Kolkatta",Value="Kolkatta"},
+                     new SelectListItem {Text="Hyderabad",Value="Hyderabad"},
+                     new SelectListItem {Text="Pune",Value="Pune"},
+                     new SelectListItem {Text="Tiruchirappalli",Value="Tiruchirappalli"}
+
+                    }, "--Please Select--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Origin, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PNRNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PNRNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PNRNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <p class="btn btn-default" style="background-color:gold; font-size:large"> @Html.ActionLink("Back", "PassengerDetails")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p class="btn btn-default" style="background-color:gold; font-size:large">  @Html.ActionLink("Next", "OnlineBooking") &nbsp;&nbsp;&nbsp; </p>
+</div>
+
+

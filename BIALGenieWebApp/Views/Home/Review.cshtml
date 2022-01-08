@@ -1,0 +1,248 @@
+﻿@model IEnumerable<BIALGenieWebApp.Models.GymServiceView>
+<h3>Preview Your Details </h3>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        tr:hover {
+            background-color: #D6EEEE;
+        }
+    </style>
+</head>
+
+   
+@foreach (var item in Model)
+{
+    var m = Session["service"];
+    if (item.PassportNumber == m.ToString()){ 
+<table class="table">
+    <tr>
+        <td>
+            <table style="width:60%">
+                <tr>
+                    <td>
+                        <b><span style="background-color:wheat;font-size:x-large"><u>Personal Details:</u></span></b>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Guest Name")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GuestName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Passport Number")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PassportNumber)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Email Id")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Emailid)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Mobile")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mobile)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Nationality")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nationality)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Date Of Birth")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dob)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Preferred Language")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PreferredLanguage)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Special Requirement")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SpecialReq)
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table style="width:88%">
+                <tr>
+                    <td>
+                        <b><span style="background-color:wheat;font-size:x-large"><u>Flight Details:</u></span></b>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Flight Type")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FlightType)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Arrival Flight Number")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArrivalFlightNo)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Arrival Airline")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArrivalAirline)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Arrival Date")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArrivalDate)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Arrival Time")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArrivalTime)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Origin From")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Origin)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("PNR Number")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PNRNumber)
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table style="width:65%">
+                <tr>
+                    <td>
+                        <b><span style="background-color:wheat;font-size:x-large"><u>Booking Details:</u></span></b>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Service Booked")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceOpted)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Booked Date")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateBooked)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Duration Of Service")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.duration)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Amount")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.amount)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Payment")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.payment)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Origin From")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Origin)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("PNR Number")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PNRNumber)
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+}
+
+
+}
+
+<div>
+    <p class="btn btn-default" style="background-color:gold; font-size:large"> @Html.ActionLink("Back", "OnlineBooking")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p class="btn btn-default" style="background-color:gold; font-size:large"> @Html.ActionLink("Booked", "")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+</div>

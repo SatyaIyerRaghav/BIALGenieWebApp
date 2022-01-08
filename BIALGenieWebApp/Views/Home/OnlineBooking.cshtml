@@ -1,0 +1,194 @@
+﻿@model BIALGenieWebApp.Models.BookingDetail
+
+<div>
+    <p style="background-color:goldenrod; font-size:large">
+        @ViewData["statusinfo"] &nbsp; @ViewData["lblmsg"]
+    </p>
+</div>
+<h3>Online Booking</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("Guest Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => Model.GuestName, ViewData["guest"] as SelectList, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.GuestName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Passport Number", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PassportNumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PassportNumber, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Service Opted For", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.ServiceOpted, new List<SelectListItem>
+       {
+           new SelectListItem{Text="StayFit Gym Services",Value="StayFit Gym Services"},
+             new SelectListItem{Text="Feel Refreshed & Revitalised",Value="Feel Refreshed & Revitalised"},
+               new SelectListItem{Text="Swimming Pool",Value="Swimming Pool"},
+                 new SelectListItem{Text="YogaSessions",Value="YogaSessions"},
+                   new SelectListItem{Text="Gamming Zones",Value="Gamming Zones"},
+
+       }, "Please select the service from list", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ServiceOpted, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div id="targetElement"style="border-block-color:black;border:groove">
+
+    </div>
+    <div class="form-group">
+        @Html.Label("Booked Date", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateBooked, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DateBooked, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Today's Date", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateOn, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DateOn, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Booked Time Slot", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TimeAt, new { htmlAttributes = new { @class = "form-control" } })
+
+            @Html.ValidationMessageFor(model => model.TimeAt, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        @Html.Label("Amount", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AmountPaid, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AmountPaid, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+    <div class="form-group">
+
+        @Html.Label("Status", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Status, new List<SelectListItem> {
+
+        new SelectListItem{Text="Booked and Paid",Value="Booked and Paid"},
+        new SelectListItem {Text="Booked But not paid",Value="Booked But not paid"}
+       }, "please select from option", new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+
+}
+<div>
+    <p class="btn btn-default" style="background-color:gold; font-size:large"> @Html.ActionLink("Back", "FlightDetails")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p class="btn btn-default" style="background-color:gold; font-size:large"> @Html.ActionLink("Review and Book The Appointment", "Review") &nbsp;&nbsp;&nbsp; </p>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<head>
+    <script type="text/javascript">
+
+        $('#ServiceOpted').change(function () {
+            debugger
+            var listval = $('#ServiceOpted').val();
+            if (listval == "StayFit Gym Services") {
+                debugger;
+                $.ajax({
+                    type: "Get",
+                    url: "/Home/ChildView",
+                    data: '{data: "' + listval + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (result) {
+                        $('#targetElement').html(result); // assign rendered output to target element's ID
+                      /*  alert("success")*/
+                    }
+                });
+            }
+            if (listval == "Feel Refreshed & Revitalised") {
+                debugger;
+                $.ajax({
+                    type: "Get",
+                    url: "/Home/ChildViewSpa",
+                    data: '{data: "' + listval + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (result) {
+                        $('#targetElement').html(result); // assign rendered output to target element's ID
+                       /* alert("success")*/
+                    }
+                });
+            }
+            if (listval == "StayFit Gym Services") {
+                debugger;
+                $.ajax({
+                    type: "Get",
+                    url: "/Home/ChildView",
+                    data: '{data: "' + listval + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (result) {
+                        $('#targetElement').html(result); // assign rendered output to target element's ID
+                       /* alert("success")*/
+                    }
+                });
+            }
+            if (listval == "StayFit Gym Services") {
+                debugger;
+                $.ajax({
+                    type: "Get",
+                    url: "/Home/ChildView",
+                    data: '{data: "' + listval + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (result) {
+                        $('#targetElement').html(result); // assign rendered output to target element's ID
+                       /* alert("success")*/
+                    }
+                });
+            }
+            if (listval == "StayFit Gym Services") {
+                debugger;
+                $.ajax({
+                    type: "Get",
+                    url: "/Home/ChildView",
+                    data: '{data: "' + listval + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (result) {
+                        $('#targetElement').html(result); // assign rendered output to target element's ID
+                       /* alert("success")*/
+                    }
+                });
+            }
+
+
+        });
+
+
+    </script>
+</head>

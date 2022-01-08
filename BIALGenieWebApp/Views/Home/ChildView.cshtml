@@ -1,0 +1,64 @@
+﻿<table>
+    <tr>
+        <td>
+            @Html.Label("Duration Booked For")
+        </td>
+        <td>
+             @Html.DropDownList("Services", new List<SelectListItem>
+               {
+             new SelectListItem{Text="30 min(Gymming)",Value="30 min(Gymming)"},
+                   new SelectListItem{Text="1 Hour (Gymming)",Value="1 Hour (Gymming)"},
+                   new SelectListItem{Text="2 Hour(Gym + Sauna Bath)",Value="2 Hour(Gym + Sauna Bath)"},
+                   new SelectListItem{Text="2 Hour(Gymming)",Value="2 Hour(Gymming)"},
+
+               }, "Please select the service from list", new { @class = "form-control" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Mode Of Payment")
+        </td>
+        <td>
+            @Html.DropDownList("payment", new List<SelectListItem>
+              {
+                  new SelectListItem{Text="Cash",Value="Cash"},
+                  new SelectListItem{Text="Credit Card",Value="Credit Card"},
+                  new SelectListItem{Text="Debit Card",Value="Debit Card"},
+
+              }, "Please select the service from list", new { @class = "form-control" })
+        </td>
+    </tr>
+</table>
+
+<input type="submit" id="btn1" value="Submit" />
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<head>
+    <script type="text/javascript">
+        $('#btn1').click(function () {
+
+            var duration = $('#Services').val();
+            var payment = $('#payment').val();
+            var pno = $('#PassportNumber').val();
+            var gname = $('#GuestName').val();
+
+            debugger;
+            $.ajax({
+                type: "Post",
+                url: "/Home/ChildView",
+                data: '{duration: "' + duration + '",payment: "' + payment + '",pno: "' + pno + '",gname: "' + gname + '" }',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (result) {
+                    $('#targetElement').html(result); // assign rendered output to target element's ID
+                  /*  alert("success")*/
+                }
+            });
+
+        });
+
+
+    </script>
+</head>
