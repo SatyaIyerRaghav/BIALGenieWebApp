@@ -175,7 +175,7 @@ namespace BIALGenieWebApp.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Homepage", "Home");
                 }
                 AddErrors(result);
             }
@@ -461,7 +461,7 @@ namespace BIALGenieWebApp.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Homepage", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
